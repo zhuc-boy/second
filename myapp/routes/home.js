@@ -9,7 +9,9 @@ router.get("/", function(req, res, next) {
     res.render("home", { title: "Express" });
   }
   let que='SELECT * FROM world.city';
-  query(que);
+  query(que,(data)=>{
+    console.log(data);
+  });
 });
 
 module.exports = router;
