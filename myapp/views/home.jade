@@ -1,0 +1,8 @@
+extends layout
+
+block content
+ if admin
+  h1 '#{admin},欢迎登陆'
+ else 
+  h1 请登陆
+  a(href='/login',) 点击

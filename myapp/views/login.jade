@@ -1,0 +1,12 @@
+extend layout
+
+block content
+ form(action="/login", method="post")
+  div
+    p 账号 
+    input(name="accout",type="text")
+  div
+    p 密码
+    input(name="pwd",type="password")
+  div
+    input(type="submit", value="登陆")
