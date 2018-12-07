@@ -8,10 +8,7 @@ router.get("/", function(req, res, next) {
   } else {
     res.render("home", { title: "Express" });
   }
-  let que='SELECT * FROM world.city';
-  query(que,(data)=>{
-    console.log(data);
-  });
+
 });
 
 module.exports = router;
