@@ -6,17 +6,13 @@ router.get("/", function(req, res, next) {
 });
 
 router.post("/", function(req, res, next) {
+  //console.log(req.session);
   if (req.body.accout && req.body.pwd) {
     let search = "select * from login.login where accout=? and pwd=?"; //where 'accout'=? and 'pwd'=?
     let params = [req.body.accout, req.body.pwd];
     db.query(search, params, (result, fields) => {
-      //req.body.accout, req.body.pwd
-      console.log(result);
       if (result.length != 0) {
-        res.cookie("username", req.body.accout, {
-          expires: new Date(Date.now() + 900000),
-          httpOnly: true
-        });
+        req.session.username = req.body.accout;
         res.redirect("/");
       } else {
         res.writeHead(200, { "Content-type": "text/html" });
