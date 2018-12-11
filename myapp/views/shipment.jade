@@ -3,7 +3,7 @@ extend layout
 block content
     if temps
         each temp in temps
-            div 公司:#{temp.company} 封头:#{temp.type} 数量:#{temp.number} 价格:#{temp.price} 进货时间:#{temp.time}                
+            div 公司:#{temp.company} 封头:#{temp.type} 数量:#{temp.number} 价格:#{temp.price} 出货时间:#{temp.time}                
     div.container
         form(action="", method="post")
             div
@@ -19,7 +19,7 @@ block content
                 p 价格
                 input(name='price',type="text",required="required",onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)",onblur="this.v();")
             div
-                p 进货时间
+                p 出货时间
                 input(name='time' type="date" placeholder="xxxx-xx-xx" required="required")
             div
                 input(type="submit" value='保存')

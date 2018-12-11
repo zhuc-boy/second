@@ -3,11 +3,11 @@ var router = express.Router();
 var db = require("../dbdata/db");
 var temp = [];
 router.get("/", function(req, res, next) {
-  res.render("store", { title: "仓库", inputid: 0 });
+  res.render("shipment", { title: "出货", inputid: 0 });
 });
 router.post("/", function(req, res, next) {
   let search =
-    "insert into login.feng_in (company,ftype,number,price,purchasetime) values (?,?,?,?,?)";
+    "insert into login.feng_out (company,ftype,number,price,purchasetime) values (?,?,?,?,?)";
   let params = [
     req.body.company,
     req.body.type,
@@ -28,7 +28,10 @@ router.post("/", function(req, res, next) {
       if (result.serverStatus == 2) {
         res.location("back");
         temp.push(req.body);
-        res.render("store", { temps: temp, inputid: temp.length });
+        res.render("shipment", {
+          temps: temp,
+          inputid: temp.length
+        });
       } else {
       }
     });

@@ -9,7 +9,8 @@ var logger = require("morgan");
 //var usersRouter = require('./routes/users');
 var home = require("./routes/home");
 var login = require("./routes/login");
-var store=require("./routes/store");
+var store = require("./routes/store");
+var shipment = require("./routes/shipment");
 var app = express();
 
 // view engine setup
@@ -31,8 +32,19 @@ app.use(session(ses));
 //app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 app.use("/", home);
+app.all("/", function(req, res, next) {
+  if (req.session.username) {
+    next;
+  } else {
+    //console.log(req.url);
+    let arr = req.url.split("/");
+    next;
+  }
+});
 app.use("/login", login);
-app.use('/store',store);
+app.use("/store", store);
+app.use("/shipment", shipment);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

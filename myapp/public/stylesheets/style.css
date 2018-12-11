@@ -5,3 +5,11 @@
 a {
   color: #00b7ff;
 }
+.container div {
+  display: flex;
+  padding: 5px 10px;
+}
+.logout {
+  font-size: 1rem;
+  font-weight: normal;
+}

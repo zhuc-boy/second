@@ -3,8 +3,15 @@ extends layout
 block content
  if admin
   h1 '#{admin},欢迎登陆'
+    a.logout(href="/logout") 退出登录
   div
-    a(href="/store") 进出货
+    a(href="/store") 进货
+  div
+    a(href="/shipment") 出货
+  div
+    a(href="") 查询库存
+  div
+    a(href="") 删除错误    
  else 
   h1 请登陆
   a(href='/login',) 点击

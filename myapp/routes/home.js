@@ -8,7 +8,9 @@ router.get("/", function(req, res, next) {
   } else {
     res.render("home", { title: "Express" });
   }
-
 });
-
+router.use("/logout", function(req, res, next) {
+  req.session.destroy;
+  res.redirect("/");
+});
 module.exports = router;
