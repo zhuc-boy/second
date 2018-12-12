@@ -5,7 +5,9 @@ var uniq = require("../dbdata/uniq");
 router.get("/", function(req, res, next) {
   let fengtype = [];
   db.query("select * from login.feng_in", [], (result, fields) => {
-    for (let i = 0; i < result.length; i++) {}
+    for (let i = 0; i < result.length; i++) {
+      fengtype;
+    }
   });
   res.render("search", { title: "查询" });
 });
