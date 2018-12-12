@@ -11,6 +11,7 @@ var home = require("./routes/home");
 var login = require("./routes/login");
 var store = require("./routes/store");
 var shipment = require("./routes/shipment");
+var search = require("./routes/search");
 var app = express();
 
 // view engine setup
@@ -29,22 +30,29 @@ var ses = {
   saveUninitialized: true
 };
 app.use(session(ses));
-//app.use('/', indexRouter);
-//app.use('/users', usersRouter);
-app.use("/", home);
-app.all("/", function(req, res, next) {
+app.all("/*", function(req, res, next) {
+  //console.log(req.url);
   if (req.session.username) {
-    next;
+    next();
   } else {
     //console.log(req.url);
     let arr = req.url.split("/");
-    next;
+
+    //arr[i] = arr[i].split('?')[0];
+    if (arr.length == 1 && arr[0] == "") {
+      next();
+    } else if ((arr.length >= 2 && arr[1] == "login") || arr[1] == "logout") {
+      next();
+    } else {
+      res.redirect("/login");
+    }
   }
 });
+app.use("/", home);
 app.use("/login", login);
 app.use("/store", store);
 app.use("/shipment", shipment);
-
+app.use("/search", search);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

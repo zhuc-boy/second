@@ -1,0 +1,17 @@
+extend layout
+
+block content
+    div.container
+        form(action="", method="post")
+            //div.radiostyle
+                input(name='ch1' type="radio" value="company")
+                |   公司
+                input(name='ch1' type="radio" value="type")    
+                |   种类
+                input(name='ch1' type="radio" value="time")
+                |   时间
+            div
+                p 输入封头种类
+                input(name="input", type="text", placeholder='不输入则显示所有库存')
+            div
+                input(type="submit", value="查询")

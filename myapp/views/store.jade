@@ -7,6 +7,8 @@ block content
     div.container
         form(action="", method="post")
             div
+                input(name='hiddenId' type="hidden" value="#{inputid}")
+            div
                 p 公司
                 input(name='company' type="text" required="required")
             div
