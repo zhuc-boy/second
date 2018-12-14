@@ -3,15 +3,47 @@ extend layout
 block content
     div.container
         form(action="", method="post")
-            //div.radiostyle
-                input(name='ch1' type="radio" value="company")
-                |   公司
-                input(name='ch1' type="radio" value="type")    
-                |   种类
-                input(name='ch1' type="radio" value="time")
-                |   时间
-            div
+            div.radiostyle 
+                if fengtype
+                    each item in fengtype
+                        input(name='ch1' type="radio" value="#{item}")    
+                        |   #{item}
+            //div
                 p 输入封头种类
                 input(name="input", type="text", placeholder='不输入则显示所有库存')
             div
                 input(type="submit", value="查询")
+    div 剩余个数为#{num}       
+    .container
+       if in_result 
+            table(border='1')
+                tr
+                    th 进仓记录
+                tr
+                    th 进货公司
+                    th 数量
+                    th 单价
+                    th 时间           
+                    each item in in_result
+                        tr
+                            th #{item.company}
+                            th #{item.number}
+                            th #{item.price}
+                            th #{item.purchasetime}   
+                                 
+    .container
+        if out_result  
+            table(border='1')
+                tr 
+                    th 出仓记录
+                tr
+                    th 出售公司
+                    th 数量
+                    th 单价
+                    th 时间    
+                    each item in out_result
+                        tr
+                            th #{item.company}
+                            th #{item.number}
+                            th #{item.price}
+                            th #{item.purchasetime}   

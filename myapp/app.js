@@ -12,6 +12,7 @@ var login = require("./routes/login");
 var store = require("./routes/store");
 var shipment = require("./routes/shipment");
 var search = require("./routes/search");
+var del = require("./routes/delete");
 var app = express();
 
 // view engine setup
@@ -53,6 +54,7 @@ app.use("/login", login);
 app.use("/store", store);
 app.use("/shipment", shipment);
 app.use("/search", search);
+app.use("/delete", del);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

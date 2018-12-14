@@ -13,6 +13,8 @@ router.post("/", function(req, res, next) {
   } else {
     let search =
       "insert into login.feng_in (company,ftype,number,price,purchasetime) values (?,?,?,?,?)";
+    let search1 = "select * from login.feng_type where typename=?";
+    let search2 = "insert into login.feng_type (typename) values (?)";
     let params = [
       req.body.company,
       req.body.type,
@@ -35,6 +37,15 @@ router.post("/", function(req, res, next) {
           temp.push(req.body);
           res.render("store", { temps: temp, inputid: temp.length });
         } else {
+        }
+      });
+      db.query(search1, [req.body.type], (result, field) => {
+        if (result.length == 0) {
+          db.query(search2, [req.body.type], (result1, field1) => {
+            if (result1.length != 0) {
+              res.render("error", { message: "录入错误" });
+            }
+          });
         }
       });
     }

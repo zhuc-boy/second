@@ -12,7 +12,7 @@ router.post("/", function(req, res, next) {
     res.render("shipment", { temps: temp, inputid: temp.length });
   } else {
     let search =
-      "insert into login.feng_out (company,ftype,number,price,purchasetime) values (?,?,?,?,?)";
+      "insert into login.feng_out (company,ftype,number,price,shippingtime) values (?,?,?,?,?)";
     let params = [
       req.body.company,
       req.body.type,

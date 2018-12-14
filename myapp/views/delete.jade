@@ -1,0 +1,17 @@
+extend layout
+
+block content
+    div
+        a(href='/delete/in') 进货
+        if in_result
+            each item in in_result
+                div #{item.company} #{item.ftype} #{item.number}  #{item.price} #{item.time}
+                    a(href='/delete/in/'+'#{item.id}') 删除
+    div
+        a(href='/delete/out') 出货
+        if out_result
+            each item in out_result
+                div #{item.company} #{item.ftype} #{item.number}  #{item.price} #{item.time}
+                    a(href='/delete/out/'+'#{item.id}') 删除
+    div
+        a(href='/') 返回首页

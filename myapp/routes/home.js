@@ -10,7 +10,6 @@ router.get("/", function(req, res, next) {
   }
 });
 router.get("/logout", function(req, res, next) {
-  console.log("11111111111");
   req.session.destroy(function(err) {
     if (err) next(err);
     res.redirect("/");

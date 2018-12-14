@@ -25,25 +25,12 @@ module.exports = {
     });
   }
 };
-/*var connect = mysql.createConnection({});
-connect.connect(function(err) {
-  if (err) {
-    console.log("数据库报错" + err);
-    return;
-  }
-});
-function query(sql, callback) {
-  connect.query(sql, (err, result, field) => {
-    if (err) throw err;
-    //console.log(result);
-    callback(result);
-  });
-  //connect.end();
-}
-module.exports = query;*/
+
 //set password for 'root'@'localhost'=old_password('zc1234');  可能需要输入一下
 //1、use mysql；
 
 //2、ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';
 
 //3、FLUSH PRIVILEGES;
+
+//4、SELECT * FROM product WHERE ID > =(select id from product limit 866613, 1) limit 20优化查询的方法
