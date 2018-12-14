@@ -5,6 +5,7 @@ var uniq = require("../dbdata/uniq");
 let fengtype = [];
 router.get("/", function(req, res, next) {
   db.query("select typename from login.feng_type", [], (result, fields) => {
+    fengtype = [];
     result.map(function(item) {
       fengtype.push(item.typename);
     });
