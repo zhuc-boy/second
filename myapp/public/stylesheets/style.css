@@ -20,3 +20,25 @@ a {
 p {
   padding-right: 1rem;
 }
+@media screen and (min-width: 900px) {
+  .biaodan {
+    width: 200px;
+    height: 2em;
+  }
+  .biaodan_click {
+    background-color: #00b7ff;
+    color: white;
+  }
+}
+@media screen and (max-width: 900px) {
+  .biaodan {
+    width: 2em;
+    height: 2em;
+    font-size: 0;
+    /*background-image: url('../images/')*/
+  }
+  .biaodan_click {
+    background-color: #00b7ff;
+    color: white;
+  }
+}

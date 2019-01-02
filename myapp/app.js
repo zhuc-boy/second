@@ -13,6 +13,7 @@ var store = require("./routes/store");
 var shipment = require("./routes/shipment");
 var search = require("./routes/search");
 var del = require("./routes/delete");
+var list = require("./routes/list");
 var app = express();
 
 // view engine setup
