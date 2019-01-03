@@ -15,19 +15,25 @@ router.post("/", function(req, res, next) {
         req.session.username = req.body.accout;
         res.redirect("/");
       } else {
-        res.writeHead(200, { "Content-type": "text/html" });
-        res.write("<script charset='GBK' type='text/javascript'>");
-        res.write("window.alert('wrong accout or password');");
+        /*res.writeHead(200, { "Content-type": "text/html" });
+        res.write("<script  type='text/javascript'>");
+        res.write("window.alert('账号密码错误');");
         res.write("window.location.href='/login'");
-        res.end("</script>");
+        res.end("</script>");*/
+        res.send(
+          "<script>window.alert('账号密码错误');window.location.href='/login'</script>"
+        );
       }
     });
   } else {
-    res.writeHead(200, { "Content-type": "text/html" });
-    res.write("<script charset='GBK' type='text/javascript'>");
-    res.write("window.alert('you should input accout and password');");
+    /*res.writeHead(200, { "Content-type": "text/html" });
+    res.write("<script  type='text/javascript'>");
+    res.write("window.alert('请输入账号密码');");
     res.write("window.location.href='/login'");
-    res.end("</script>");
+    res.end("</script>");*/
+    res.send(
+      "<script>window.alert('请输入账号密码');window.location.href='/login'</script>"
+    );
   }
   //res.render("home", { admin: req.body.accout });
 });

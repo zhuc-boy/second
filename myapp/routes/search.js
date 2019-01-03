@@ -37,8 +37,9 @@ router.post("/", function(req, res, next) {
         total_price += result[i].number * result[i].price;
       }
     } else {
-      res.writeHead(200, { "Content-type": "text/html" });
-      res.write("查询没结果");
+      /*res.writeHead(200, { "Content-type": "text/html" });
+      res.write("查询没结果");*/
+      //res.sendStatus(404);
     }
     //console.log(in_result);
     db.query(search2, params, (result, fields) => {
@@ -66,7 +67,8 @@ router.post("/", function(req, res, next) {
         total_price: total_price,
         unit_price: unit_price,
         title: "查询",
-        fengtype: fengtype
+        fengtype: fengtype,
+        fentype: req.body.ch1
       });
     });
   });

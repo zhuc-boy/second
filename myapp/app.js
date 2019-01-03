@@ -13,7 +13,7 @@ var store = require("./routes/store");
 var shipment = require("./routes/shipment");
 var search = require("./routes/search");
 var del = require("./routes/delete");
-var list = require("./routes/list");
+//var list = require("./routes/list");
 var app = express();
 
 // view engine setup
@@ -43,7 +43,7 @@ app.all("/*", function(req, res, next) {
     //arr[i] = arr[i].split('?')[0];
     if (arr.length == 1 && arr[0] == "") {
       next();
-    } else if ((arr.length >= 2 && arr[1] == "login") || arr[1] == "logout") {
+    } else if (arr.length >= 2 && (arr[1] == "login" || arr[1] == "logout")) {
       next();
     } else {
       res.redirect("/login");
@@ -51,6 +51,7 @@ app.all("/*", function(req, res, next) {
   }
 });
 app.use("/", home);
+//app.use("/", list);
 app.use("/login", login);
 app.use("/store", store);
 app.use("/shipment", shipment);
